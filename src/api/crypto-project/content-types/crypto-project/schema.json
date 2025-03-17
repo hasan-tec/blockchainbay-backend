@@ -1,0 +1,102 @@
+{
+  "kind": "collectionType",
+  "collectionName": "crypto_projects",
+  "info": {
+    "singularName": "crypto-project",
+    "pluralName": "crypto-projects",
+    "displayName": "CryptoProject",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "Slug": {
+      "type": "string"
+    },
+    "Logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "ShortDescription": {
+      "type": "string"
+    },
+    "DetailedDescription": {
+      "type": "blocks"
+    },
+    "CurrentStatus": {
+      "type": "enumeration",
+      "enum": [
+        "Verified",
+        "Coming Soon"
+      ]
+    },
+    "Category": {
+      "type": "enumeration",
+      "enum": [
+        "Computing",
+        "Storage",
+        "Wireless",
+        "Sensor",
+        "AI",
+        "Mapping",
+        "Geopositioning"
+      ]
+    },
+    "SubCategory": {
+      "type": "string"
+    },
+    "TokenType": {
+      "type": "enumeration",
+      "enum": [
+        "Has token",
+        "Launched",
+        "No token",
+        "Unreleased"
+      ]
+    },
+    "Website": {
+      "type": "string"
+    },
+    "Symbol": {
+      "type": "string"
+    },
+    "ChainType": {
+      "type": "enumeration",
+      "enum": [
+        "The blockchain it runs on"
+      ]
+    },
+    "LaunchDate": {
+      "type": "date"
+    },
+    "VideoURL": {
+      "type": "string"
+    },
+    "Twitter": {
+      "type": "string"
+    },
+    "Telegram": {
+      "type": "string"
+    },
+    "Discord": {
+      "type": "string"
+    },
+    "AnalyticsDuneQueryID": {
+      "type": "string"
+    },
+    "dunequeryid2": {
+      "type": "string"
+    }
+  }
+}
