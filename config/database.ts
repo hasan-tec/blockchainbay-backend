@@ -1,7 +1,7 @@
 import path from 'path';
 
 export default ({ env }) => {
-  const client = env('DATABASE_CLIENT', 'sqlite');
+  const client = env('DATABASE_CLIENT', 'postgres'); // Default to postgres
 
   const connections = {
     mysql: {
@@ -24,21 +24,13 @@ export default ({ env }) => {
     },
     postgres: {
       connection: {
-        connectionString: env('DATABASE_URL'),
-        host: env('DATABASE_HOST', 'localhost'),
+        connectionString: env('DATABASE_URL'), // Optional: Use if provided by Render
+        host: env('DATABASE_HOST', 'dpg-cvc12p5umphs73cfidh0-a'),
         port: env.int('DATABASE_PORT', 5432),
-        database: env('DATABASE_NAME', 'strapi'),
-        user: env('DATABASE_USERNAME', 'strapi'),
-        password: env('DATABASE_PASSWORD', 'strapi'),
-        ssl: env.bool('DATABASE_SSL', false) && {
-          key: env('DATABASE_SSL_KEY', undefined),
-          cert: env('DATABASE_SSL_CERT', undefined),
-          ca: env('DATABASE_SSL_CA', undefined),
-          capath: env('DATABASE_SSL_CAPATH', undefined),
-          cipher: env('DATABASE_SSL_CIPHER', undefined),
-          rejectUnauthorized: env.bool('DATABASE_SSL_REJECT_UNAUTHORIZED', true),
-        },
-        schema: env('DATABASE_SCHEMA', 'public'),
+        database: env('DATABASE_NAME', 'blockchainbay_chris'),
+        user: env('DATABASE_USERNAME', 'blockchainbay_chris_user'),
+        password: env('DATABASE_PASSWORD', 'z4UecT4u4wTTUJM14cewPyEPBX8Hb0adpg-cvc12p5umphs73cfidh0-a'),
+        ssl: env.bool('DATABASE_SSL', true), // Render requires SSL for external connections
       },
       pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
     },
