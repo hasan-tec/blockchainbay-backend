@@ -29,7 +29,7 @@
       ]
     },
     "ShortDescription": {
-      "type": "string"
+      "type": "text"
     },
     "DetailedDescription": {
       "type": "blocks"
@@ -44,16 +44,19 @@
     "Category": {
       "type": "enumeration",
       "enum": [
-        "Computing",
-        "Storage",
-        "Wireless",
-        "Sensor",
-        "AI",
-        "Mapping",
-        "Geopositioning"
+        "DePIN",
+        "Node",
+        "Due-Diligence",
+        "Hardware Wallets",
+        "News, Insights & Data",
+        "Mining Equipment",
+        "Seed Phrase Storage",
+        "Taxes",
+        "Non-Custodial Swap",
+        "Everyday Crypto Uses"
       ]
     },
-    "SubCategory": {
+    "OtherSubCategory": {
       "type": "string"
     },
     "TokenType": {
@@ -74,7 +77,28 @@
     "ChainType": {
       "type": "enumeration",
       "enum": [
-        "The blockchain it runs on"
+        "Algorand",
+        "Arbitrum",
+        "Arweave",
+        "Avalanche",
+        "Base",
+        "Bitcoin",
+        "BSC",
+        "Cardano",
+        "Constellation",
+        "Cosmos",
+        "Ethereum",
+        "Filecoin",
+        "IoTeX",
+        "Kadena",
+        "Monad",
+        "Near",
+        "Peaq",
+        "Polkadot",
+        "Polygon",
+        "Sentinel",
+        "Solana",
+        "Sui"
       ]
     },
     "LaunchDate": {
@@ -97,6 +121,27 @@
     },
     "dunequeryid2": {
       "type": "string"
+    },
+    "AnalyticsOneHeader": {
+      "type": "string"
+    },
+    "AnalyticsTwoHeader": {
+      "type": "string"
+    },
+    "Subcategory": {
+      "type": "enumeration",
+      "enum": [
+        "Compute",
+        "Storage",
+        "Wireless",
+        "Sensor",
+        "AI",
+        "CDN/Network/Bandwidth",
+        "Privacy",
+        "Energy",
+        "Mobility",
+        "Database"
+      ]
     }
   }
 }

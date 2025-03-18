@@ -474,18 +474,48 @@ export interface ApiCryptoProjectCryptoProject
   };
   attributes: {
     AnalyticsDuneQueryID: Schema.Attribute.String;
+    AnalyticsOneHeader: Schema.Attribute.String;
+    AnalyticsTwoHeader: Schema.Attribute.String;
     Category: Schema.Attribute.Enumeration<
       [
-        'Computing',
-        'Storage',
-        'Wireless',
-        'Sensor',
-        'AI',
-        'Mapping',
-        'Geopositioning',
+        'DePIN',
+        'Node',
+        'Due-Diligence',
+        'Hardware Wallets',
+        'News, Insights & Data',
+        'Mining Equipment',
+        'Seed Phrase Storage',
+        'Taxes',
+        'Non-Custodial Swap',
+        'Everyday Crypto Uses',
       ]
     >;
-    ChainType: Schema.Attribute.Enumeration<['The blockchain it runs on']>;
+    ChainType: Schema.Attribute.Enumeration<
+      [
+        'Algorand',
+        'Arbitrum',
+        'Arweave',
+        'Avalanche',
+        'Base',
+        'Bitcoin',
+        'BSC',
+        'Cardano',
+        'Constellation',
+        'Cosmos',
+        'Ethereum',
+        'Filecoin',
+        'IoTeX',
+        'Kadena',
+        'Monad',
+        'Near',
+        'Peaq',
+        'Polkadot',
+        'Polygon',
+        'Sentinel',
+        'Solana',
+        'Sui',
+      ]
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -501,10 +531,24 @@ export interface ApiCryptoProjectCryptoProject
     > &
       Schema.Attribute.Private;
     Logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    OtherSubCategory: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    ShortDescription: Schema.Attribute.String;
+    ShortDescription: Schema.Attribute.Text;
     Slug: Schema.Attribute.String;
-    SubCategory: Schema.Attribute.String;
+    Subcategory: Schema.Attribute.Enumeration<
+      [
+        'Compute',
+        'Storage',
+        'Wireless',
+        'Sensor',
+        'AI',
+        'CDN/Network/Bandwidth',
+        'Privacy',
+        'Energy',
+        'Mobility',
+        'Database',
+      ]
+    >;
     Symbol: Schema.Attribute.String;
     Telegram: Schema.Attribute.String;
     title: Schema.Attribute.String;
