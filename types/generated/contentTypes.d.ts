@@ -524,6 +524,7 @@ export interface ApiCryptoProjectCryptoProject
     Discord: Schema.Attribute.String;
     dunequeryid2: Schema.Attribute.String;
     LaunchDate: Schema.Attribute.Date;
+    Link: Schema.Attribute.Component<'shared.link', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
