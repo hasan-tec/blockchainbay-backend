@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "giveaways",
+  "info": {
+    "singularName": "giveaway",
+    "pluralName": "giveaways",
+    "displayName": "Giveaway",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "blocks"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "StartDate": {
+      "type": "datetime"
+    },
+    "EndDate": {
+      "type": "datetime"
+    },
+    "GiveawayStatus": {
+      "type": "enumeration",
+      "enum": [
+        "active",
+        "upcoming",
+        "ended"
+      ]
+    },
+    "Prizes": {
+      "type": "blocks"
+    },
+    "Rules": {
+      "type": "blocks"
+    },
+    "Value": {
+      "type": "string"
+    },
+    "entries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::giveaway-entry-collection.giveaway-entry-collection",
+      "mappedBy": "giveaway"
+    },
+    "slug": {
+      "type": "string"
+    }
+  }
+}

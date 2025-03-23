@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "giveaway_entry_collections",
+  "info": {
+    "singularName": "giveaway-entry-collection",
+    "pluralName": "giveaway-entry-collections",
+    "displayName": "Giveaway Entry Collection",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "email"
+    },
+    "EntryDate": {
+      "type": "datetime"
+    },
+    "giveaway": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::giveaway.giveaway",
+      "inversedBy": "entries"
+    }
+  }
+}
