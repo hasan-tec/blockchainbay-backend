@@ -474,32 +474,26 @@ export interface ApiCryptoProjectCryptoProject
   };
 }
 
-export interface ApiGiveawayEntryCollectionGiveawayEntryCollection
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'giveaway_entry_collections';
+export interface ApiEntryEntry extends Struct.CollectionTypeSchema {
+  collectionName: 'entries';
   info: {
-    description: '';
-    displayName: 'Giveaway Entry Collection';
-    pluralName: 'giveaway-entry-collections';
-    singularName: 'giveaway-entry-collection';
+    displayName: 'Entry';
+    pluralName: 'entries';
+    singularName: 'entry';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Email: Schema.Attribute.Email;
-    EntryDate: Schema.Attribute.DateTime;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
     giveaway: Schema.Attribute.Relation<'manyToOne', 'api::giveaway.giveaway'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::giveaway-entry-collection.giveaway-entry-collection'
-    > &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::entry.entry'> &
       Schema.Attribute.Private;
-    Name: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -510,7 +504,6 @@ export interface ApiGiveawayEntryCollectionGiveawayEntryCollection
 export interface ApiGiveawayGiveaway extends Struct.CollectionTypeSchema {
   collectionName: 'giveaways';
   info: {
-    description: '';
     displayName: 'Giveaway';
     pluralName: 'giveaways';
     singularName: 'giveaway';
@@ -522,32 +515,27 @@ export interface ApiGiveawayGiveaway extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.Blocks;
-    EndDate: Schema.Attribute.DateTime;
-    entries: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::giveaway-entry-collection.giveaway-entry-collection'
-    >;
-    GiveawayStatus: Schema.Attribute.Enumeration<
-      ['active', 'upcoming', 'ended']
-    >;
-    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    description: Schema.Attribute.RichText;
+    endDate: Schema.Attribute.Date & Schema.Attribute.Required;
+    entries: Schema.Attribute.Relation<'oneToMany', 'api::entry.entry'>;
+    image: Schema.Attribute.Media;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::giveaway.giveaway'
     > &
       Schema.Attribute.Private;
-    Prizes: Schema.Attribute.Blocks;
+    prizes: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
-    Rules: Schema.Attribute.Blocks;
-    slug: Schema.Attribute.String;
-    StartDate: Schema.Attribute.DateTime;
-    Title: Schema.Attribute.String;
+    rules: Schema.Attribute.Text;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    startDate: Schema.Attribute.Date & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Value: Schema.Attribute.String;
+    value: Schema.Attribute.Float;
+    winner: Schema.Attribute.Relation<'oneToOne', 'api::entry.entry'>;
   };
 }
 
@@ -577,6 +565,42 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     siteDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     siteName: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPreviouswinnerPreviouswinner
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'previouswinners';
+  info: {
+    description: '';
+    displayName: 'previouswinner';
+    pluralName: 'previouswinners';
+    singularName: 'previouswinner';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    entry: Schema.Attribute.Relation<'oneToOne', 'api::entry.entry'>;
+    giveaway: Schema.Attribute.Relation<'oneToOne', 'api::giveaway.giveaway'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::previouswinner.previouswinner'
+    > &
+      Schema.Attribute.Private;
+    notes: Schema.Attribute.Text;
+    notified: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    publishedAt: Schema.Attribute.DateTime;
+    selected_at: Schema.Attribute.DateTime &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'now'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1093,9 +1117,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::crypto-project.crypto-project': ApiCryptoProjectCryptoProject;
-      'api::giveaway-entry-collection.giveaway-entry-collection': ApiGiveawayEntryCollectionGiveawayEntryCollection;
+      'api::entry.entry': ApiEntryEntry;
       'api::giveaway.giveaway': ApiGiveawayGiveaway;
       'api::global.global': ApiGlobalGlobal;
+      'api::previouswinner.previouswinner': ApiPreviouswinnerPreviouswinner;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

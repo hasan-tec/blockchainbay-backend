@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "previouswinners",
+  "info": {
+    "singularName": "previouswinner",
+    "pluralName": "previouswinners",
+    "displayName": "previouswinner",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "giveaway": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::giveaway.giveaway"
+    },
+    "entry": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::entry.entry"
+    },
+    "selected_at": {
+      "type": "datetime",
+      "required": true,
+      "default": "now"
+    },
+    "notified": {
+      "type": "boolean",
+      "default": false
+    },
+    "notes": {
+      "type": "text"
+    }
+  }
+}

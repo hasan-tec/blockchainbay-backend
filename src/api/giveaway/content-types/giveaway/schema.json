@@ -4,61 +4,56 @@
   "info": {
     "singularName": "giveaway",
     "pluralName": "giveaways",
-    "displayName": "Giveaway",
-    "description": ""
+    "displayName": "Giveaway"
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "Title": {
-      "type": "string"
+    "title": {
+      "type": "string",
+      "required": true
     },
-    "Description": {
-      "type": "blocks"
+    "description": {
+      "type": "richtext"
     },
-    "Image": {
+    "image": {
       "type": "media",
       "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "required": false
     },
-    "StartDate": {
-      "type": "datetime"
+    "startDate": {
+      "type": "date",
+      "required": true
     },
-    "EndDate": {
-      "type": "datetime"
+    "endDate": {
+      "type": "date",
+      "required": true
     },
-    "GiveawayStatus": {
-      "type": "enumeration",
-      "enum": [
-        "active",
-        "upcoming",
-        "ended"
-      ]
+    "value": {
+      "type": "float"
     },
-    "Prizes": {
-      "type": "blocks"
+    "rules": {
+      "type": "text"
     },
-    "Rules": {
-      "type": "blocks"
+    "prizes": {
+      "type": "text"
     },
-    "Value": {
-      "type": "string"
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
     },
     "entries": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::giveaway-entry-collection.giveaway-entry-collection",
+      "target": "api::entry.entry",
       "mappedBy": "giveaway"
     },
-    "slug": {
-      "type": "string"
+    "winner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::entry.entry"
     }
   }
 }

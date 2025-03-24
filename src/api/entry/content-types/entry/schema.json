@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "entries",
+  "info": {
+    "singularName": "entry",
+    "pluralName": "entries",
+    "displayName": "Entry"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "giveaway": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::giveaway.giveaway",
+      "inversedBy": "entries"
+    }
+  }
+}
