@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "compatibilities",
+  "info": {
+    "singularName": "compatibility",
+    "pluralName": "compatibilities",
+    "displayName": "Compatibility"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "compatibilities"
+    }
+  }
+}

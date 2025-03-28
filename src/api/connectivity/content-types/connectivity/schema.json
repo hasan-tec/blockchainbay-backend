@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "connectivities",
+  "info": {
+    "singularName": "connectivity",
+    "pluralName": "connectivities",
+    "displayName": "Connectivity"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "connectivities"
+    }
+  }
+}

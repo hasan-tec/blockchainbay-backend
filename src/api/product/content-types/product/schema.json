@@ -1,0 +1,132 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "originalPrice": {
+      "type": "decimal"
+    },
+    "inStock": {
+      "type": "boolean",
+      "default": true
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "new": {
+      "type": "boolean",
+      "default": false
+    },
+    "sale": {
+      "type": "boolean",
+      "default": false
+    },
+    "rating": {
+      "type": "decimal",
+      "default": 0
+    },
+    "reviewCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "mainImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "additionalImages": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "heliumDeployVariantId": {
+      "type": "string",
+      "required": true
+    },
+    "heliumDeployProductUrl": {
+      "type": "string"
+    },
+    "dimensions": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "string"
+    },
+    "materials": {
+      "type": "string"
+    },
+    "batteryLife": {
+      "type": "string"
+    },
+    "warranty": {
+      "type": "string"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "products"
+    },
+    "features": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::feature.feature",
+      "mappedBy": "product"
+    },
+    "specifications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::specification.specification",
+      "mappedBy": "product"
+    },
+    "compatibilities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::compatibility.compatibility",
+      "mappedBy": "product"
+    },
+    "connectivities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::connectivity.connectivity",
+      "mappedBy": "product"
+    },
+    "description": {
+      "type": "blocks"
+    }
+  }
+}
