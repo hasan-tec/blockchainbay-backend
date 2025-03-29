@@ -43,14 +43,6 @@
       "type": "boolean",
       "default": false
     },
-    "rating": {
-      "type": "decimal",
-      "default": 0
-    },
-    "reviewCount": {
-      "type": "integer",
-      "default": 0
-    },
     "mainImage": {
       "type": "media",
       "multiple": false,
@@ -107,12 +99,6 @@
       "target": "api::feature.feature",
       "mappedBy": "product"
     },
-    "specifications": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::specification.specification",
-      "mappedBy": "product"
-    },
     "compatibilities": {
       "type": "relation",
       "relation": "oneToMany",
@@ -127,6 +113,15 @@
     },
     "description": {
       "type": "blocks"
+    },
+    "specifications": {
+      "type": "blocks"
+    },
+    "Review": {
+      "displayName": "Review",
+      "type": "component",
+      "repeatable": true,
+      "component": "review.review"
     }
   }
 }

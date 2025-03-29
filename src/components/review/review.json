@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_review_reviews",
+  "info": {
+    "displayName": "Review"
+  },
+  "options": {},
+  "attributes": {
+    "Author": {
+      "type": "string"
+    },
+    "Rating": {
+      "type": "integer",
+      "default": 0,
+      "max": 5,
+      "required": true,
+      "min": 1
+    },
+    "Date": {
+      "type": "datetime"
+    },
+    "Title": {
+      "type": "string"
+    },
+    "Content": {
+      "type": "text"
+    },
+    "Verified": {
+      "type": "boolean"
+    }
+  }
+}

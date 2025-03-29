@@ -1,5 +1,29 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ReviewReview extends Struct.ComponentSchema {
+  collectionName: 'components_review_reviews';
+  info: {
+    displayName: 'Review';
+  };
+  attributes: {
+    Author: Schema.Attribute.String;
+    Content: Schema.Attribute.Text;
+    Date: Schema.Attribute.DateTime;
+    Rating: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 5;
+          min: 1;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    Title: Schema.Attribute.String;
+    Verified: Schema.Attribute.Boolean;
+  };
+}
+
 export interface SharedLink extends Struct.ComponentSchema {
   collectionName: 'components_shared_links';
   info: {
@@ -80,6 +104,7 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'review.review': ReviewReview;
       'shared.link': SharedLink;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;

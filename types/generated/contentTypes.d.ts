@@ -772,14 +772,10 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     originalPrice: Schema.Attribute.Decimal;
     price: Schema.Attribute.Decimal & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    rating: Schema.Attribute.Decimal & Schema.Attribute.DefaultTo<0>;
-    reviewCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    Review: Schema.Attribute.Component<'review.review', true>;
     sale: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
-    specifications: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::specification.specification'
-    >;
+    specifications: Schema.Attribute.Blocks;
     tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -811,7 +807,6 @@ export interface ApiSpecificationSpecification
       'api::specification.specification'
     > &
       Schema.Attribute.Private;
-    product: Schema.Attribute.Relation<'manyToOne', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
