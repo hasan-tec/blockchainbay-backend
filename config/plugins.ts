@@ -4,4 +4,7 @@ export default ({ env }) => ({
       jwtSecret: env('JWT_SECRET'),
     },
   },
+  seo: {
+    enabled: true,
+  },
 });

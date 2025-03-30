@@ -533,6 +533,7 @@ export interface ApiCryptoProjectCryptoProject
     Logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     OtherSubCategory: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
     ShortDescription: Schema.Attribute.Text;
     Slug: Schema.Attribute.String;
     Subcategory: Schema.Attribute.Enumeration<
