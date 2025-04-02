@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wallpapers",
+  "info": {
+    "singularName": "wallpaper",
+    "pluralName": "wallpapers",
+    "displayName": "Wallpaper",
+    "description": "Collection of desktop and mobile wallpapers"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "dimensions": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "desktop",
+        "mobile"
+      ],
+      "required": true
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "order": {
+      "type": "integer",
+      "default": 1
+    }
+  }
+}

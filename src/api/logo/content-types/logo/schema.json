@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "logos",
+  "info": {
+    "singularName": "logo",
+    "pluralName": "logos",
+    "displayName": "Logo",
+    "description": "Brand logos in various formats"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "format": {
+      "type": "enumeration",
+      "enum": [
+        "svg",
+        "png",
+        "jpeg",
+        "vector",
+        "pdf"
+      ],
+      "required": true
+    },
+    "variation": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "white",
+        "black",
+        "icon"
+      ],
+      "required": true
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "order": {
+      "type": "integer",
+      "default": 1
+    }
+  }
+}

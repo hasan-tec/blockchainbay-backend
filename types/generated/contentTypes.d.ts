@@ -691,6 +691,44 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiLogoLogo extends Struct.CollectionTypeSchema {
+  collectionName: 'logos';
+  info: {
+    description: 'Brand logos in various formats';
+    displayName: 'Logo';
+    pluralName: 'logos';
+    singularName: 'logo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    file: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    format: Schema.Attribute.Enumeration<
+      ['svg', 'png', 'jpeg', 'vector', 'pdf']
+    > &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::logo.logo'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<1>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    variation: Schema.Attribute.Enumeration<
+      ['primary', 'white', 'black', 'icon']
+    > &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface ApiPreviouswinnerPreviouswinner
   extends Struct.CollectionTypeSchema {
   collectionName: 'previouswinners';
@@ -837,6 +875,42 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
     products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWallpaperWallpaper extends Struct.CollectionTypeSchema {
+  collectionName: 'wallpapers';
+  info: {
+    description: 'Collection of desktop and mobile wallpapers';
+    displayName: 'Wallpaper';
+    pluralName: 'wallpapers';
+    singularName: 'wallpaper';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    dimensions: Schema.Attribute.String & Schema.Attribute.Required;
+    file: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::wallpaper.wallpaper'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<1>;
+    publishedAt: Schema.Attribute.DateTime;
+    thumbnail: Schema.Attribute.Media<'images'>;
+    type: Schema.Attribute.Enumeration<['desktop', 'mobile']> &
+      Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1360,10 +1434,12 @@ declare module '@strapi/strapi' {
       'api::feature.feature': ApiFeatureFeature;
       'api::giveaway.giveaway': ApiGiveawayGiveaway;
       'api::global.global': ApiGlobalGlobal;
+      'api::logo.logo': ApiLogoLogo;
       'api::previouswinner.previouswinner': ApiPreviouswinnerPreviouswinner;
       'api::product.product': ApiProductProduct;
       'api::specification.specification': ApiSpecificationSpecification;
       'api::tag.tag': ApiTagTag;
+      'api::wallpaper.wallpaper': ApiWallpaperWallpaper;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
