@@ -13,7 +13,8 @@
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+    "upgrade:dry": "npx @strapi/upgrade latest --dry",
+    "postinstall": "mkdir -p app/public/uploads && chmod -R 755 app/public"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.11.2",
