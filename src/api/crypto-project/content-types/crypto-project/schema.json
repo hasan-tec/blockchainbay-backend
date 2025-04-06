@@ -53,7 +53,8 @@
         "Seed Phrase Storage",
         "Taxes",
         "Non-Custodial Swap",
-        "Everyday Crypto Uses"
+        "Everyday Crypto Uses",
+        "Hosting"
       ]
     },
     "OtherSubCategory": {
@@ -153,6 +154,9 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
+    },
+    "descriptionbeforevideo": {
+      "type": "blocks"
     }
   }
 }

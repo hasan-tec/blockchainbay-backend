@@ -487,6 +487,7 @@ export interface ApiCryptoProjectCryptoProject
         'Taxes',
         'Non-Custodial Swap',
         'Everyday Crypto Uses',
+        'Hosting',
       ]
     >;
     ChainType: Schema.Attribute.Enumeration<
@@ -519,6 +520,7 @@ export interface ApiCryptoProjectCryptoProject
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     CurrentStatus: Schema.Attribute.Enumeration<['Verified', 'Coming Soon']>;
+    descriptionbeforevideo: Schema.Attribute.Blocks;
     DetailedDescription: Schema.Attribute.Blocks;
     Discord: Schema.Attribute.String;
     dunequeryid2: Schema.Attribute.String;
