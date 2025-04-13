@@ -93,6 +93,8 @@
         "IoTeX",
         "Kadena",
         "Monad",
+        "Moonriver",
+        "Dynex",
         "Near",
         "Peaq",
         "Polkadot",
@@ -157,6 +159,10 @@
     },
     "descriptionbeforevideo": {
       "type": "blocks"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

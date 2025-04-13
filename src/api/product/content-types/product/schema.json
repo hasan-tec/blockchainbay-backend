@@ -1,168 +1,127 @@
 {
   "kind": "collectionType",
-  "collectionName": "crypto_projects",
+  "collectionName": "products",
   "info": {
-    "singularName": "crypto-project",
-    "pluralName": "crypto-projects",
-    "displayName": "CryptoProject",
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
     "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "title": {
-      "type": "string"
+    "name": {
+      "type": "string",
+      "required": true
     },
-    "Slug": {
-      "type": "string"
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
     },
-    "Logo": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+    "price": {
+      "type": "decimal",
+      "required": true
     },
-    "ShortDescription": {
-      "type": "text"
+    "originalPrice": {
+      "type": "decimal"
     },
-    "DetailedDescription": {
-      "type": "blocks"
-    },
-    "CurrentStatus": {
-      "type": "enumeration",
-      "enum": [
-        "Verified",
-        "Coming Soon"
-      ]
-    },
-    "Category": {
-      "type": "enumeration",
-      "enum": [
-        "DePIN",
-        "Node",
-        "Due-Diligence",
-        "Hardware Wallets",
-        "News, Insights & Data",
-        "Mining Equipment",
-        "Seed Phrase Storage",
-        "Taxes",
-        "Non-Custodial Swap",
-        "Everyday Crypto Uses",
-        "Hosting"
-      ]
-    },
-    "OtherSubCategory": {
-      "type": "string"
-    },
-    "TokenType": {
-      "type": "enumeration",
-      "enum": [
-        "Has token",
-        "Launched",
-        "No token",
-        "Unreleased"
-      ]
-    },
-    "Website": {
-      "type": "string"
-    },
-    "Symbol": {
-      "type": "string"
-    },
-    "ChainType": {
-      "type": "enumeration",
-      "enum": [
-        "Algorand",
-        "Arbitrum",
-        "Arweave",
-        "Avalanche",
-        "Base",
-        "Bitcoin",
-        "BSC",
-        "Cardano",
-        "Constellation",
-        "Cosmos",
-        "Ethereum",
-        "Filecoin",
-        "IoTeX",
-        "Kadena",
-        "Monad",
-        "Moonriver",
-        "Dynex",
-        "Near",
-        "Peaq",
-        "Polkadot",
-        "Polygon",
-        "Sentinel",
-        "Solana",
-        "Sui"
-      ]
-    },
-    "LaunchDate": {
-      "type": "date"
-    },
-    "VideoURL": {
-      "type": "string"
-    },
-    "Twitter": {
-      "type": "string"
-    },
-    "Telegram": {
-      "type": "string"
-    },
-    "Discord": {
-      "type": "string"
-    },
-    "AnalyticsDuneQueryID": {
-      "type": "string"
-    },
-    "dunequeryid2": {
-      "type": "string"
-    },
-    "AnalyticsOneHeader": {
-      "type": "string"
-    },
-    "AnalyticsTwoHeader": {
-      "type": "string"
-    },
-    "Subcategory": {
-      "type": "enumeration",
-      "enum": [
-        "Compute",
-        "Storage",
-        "Wireless",
-        "Sensor",
-        "AI",
-        "CDN/Network/Bandwidth",
-        "Privacy",
-        "Energy",
-        "Mobility",
-        "Database"
-      ]
-    },
-    "Link": {
-      "displayName": "Link",
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.link"
-    },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
-    },
-    "descriptionbeforevideo": {
-      "type": "blocks"
+    "inStock": {
+      "type": "boolean",
+      "default": true
     },
     "featured": {
       "type": "boolean",
       "default": false
+    },
+    "new": {
+      "type": "boolean",
+      "default": false
+    },
+    "sale": {
+      "type": "boolean",
+      "default": false
+    },
+    "mainImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "additionalImages": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "heliumDeployVariantId": {
+      "type": "string",
+      "required": true
+    },
+    "heliumDeployProductUrl": {
+      "type": "string"
+    },
+    "dimensions": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "string"
+    },
+    "materials": {
+      "type": "string"
+    },
+    "batteryLife": {
+      "type": "string"
+    },
+    "warranty": {
+      "type": "string"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "products"
+    },
+    "features": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::feature.feature",
+      "mappedBy": "product"
+    },
+    "compatibilities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::compatibility.compatibility",
+      "mappedBy": "product"
+    },
+    "connectivities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::connectivity.connectivity",
+      "mappedBy": "product"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "specifications": {
+      "type": "blocks"
+    },
+    "Review": {
+      "displayName": "Review",
+      "type": "component",
+      "repeatable": true,
+      "component": "review.review"
     }
   }
 }
