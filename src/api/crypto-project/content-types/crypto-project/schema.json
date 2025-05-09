@@ -104,6 +104,10 @@
         "Sui"
       ]
     },
+    "tokenAddress": {
+      "type": "string",
+      "description": "Contract address of the token on the blockchain"
+    },
     "LaunchDate": {
       "type": "date"
     },

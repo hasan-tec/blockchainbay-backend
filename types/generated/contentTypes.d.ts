@@ -507,6 +507,8 @@ export interface ApiCryptoProjectCryptoProject
         'IoTeX',
         'Kadena',
         'Monad',
+        'Moonriver',
+        'Dynex',
         'Near',
         'Peaq',
         'Polkadot',
@@ -524,6 +526,7 @@ export interface ApiCryptoProjectCryptoProject
     DetailedDescription: Schema.Attribute.Blocks;
     Discord: Schema.Attribute.String;
     dunequeryid2: Schema.Attribute.String;
+    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     LaunchDate: Schema.Attribute.Date;
     Link: Schema.Attribute.Component<'shared.link', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -555,6 +558,7 @@ export interface ApiCryptoProjectCryptoProject
     Symbol: Schema.Attribute.String;
     Telegram: Schema.Attribute.String;
     title: Schema.Attribute.String;
+    tokenAddress: Schema.Attribute.String;
     TokenType: Schema.Attribute.Enumeration<
       ['Has token', 'Launched', 'No token', 'Unreleased']
     >;
